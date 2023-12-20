@@ -1,0 +1,161 @@
+﻿:root {
+    --dark: #78fad1;
+    --light: #ffffff;
+    --success: #0abf30;
+    --error: #e24d4c;
+    --warning: #e9bd0c;
+    --info: #3498db;
+    --random: #eb43ff;
+}
+
+.toastSection {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999999;
+}
+
+.toastSection :where(.myToast, .column) {
+    display: flex;
+    align-items: center;
+}
+
+.toastSection .myToast {
+    width: 400px;
+    position: relative;
+    overflow: hidden;
+    list-style: none;
+    border-radius: 4px;
+    padding: 16px 17px;
+    margin-bottom: 10px;
+    background: var(--light);
+    justify-content: space-between;
+    animation: show_toast 0.3s ease forwards;
+}
+
+@keyframes show_toast {
+    0% {
+        transform: translateX(100%);
+    }
+
+    40% {
+        transform: translateX(-5%);
+    }
+
+    80% {
+        transform: translateX(0%);
+    }
+
+    100% {
+        transform: translateX(-10px);
+    }
+}
+
+.toastSection .myToast.hide {
+    animation: hide_toast 0.3s ease forwards;
+}
+
+@keyframes hide_toast {
+    0% {
+        transform: translateX(-10px);
+    }
+
+    40% {
+        transform: translateX(0%);
+    }
+
+    80% {
+        transform: translateX(-5%);
+    }
+
+    100% {
+        transform: translateX(calc(100% + 20px));
+    }
+}
+
+.myToast::before {
+    position: absolute;
+    content: "";
+    height: 3px;
+    width: 100%;
+    bottom: 0px;
+    left: 0px;
+    animation: progress 5s linear forwards;
+}
+
+@keyframes progress {
+    100% {
+        width: 0%;
+    }
+}
+
+.myToast.success::before,
+.btn#success {
+    background: var(--success);
+}
+
+.myToast.error::before,
+.btn#error {
+    background: var(--error);
+}
+
+.myToast.warning::before,
+.btn#warning {
+    background: var(--warning);
+}
+
+.myToast.info::before,
+.btn#info {
+    background: var(--info);
+}
+
+.myToast.random::before,
+.btn#random {
+    background: var(--random);
+}
+
+.myToast .column i {
+    font-size: 1.75rem;
+}
+
+.myToast.success .column i {
+    color: var(--success);
+}
+
+.myToast.error .column i {
+    color: var(--error);
+}
+
+.myToast.warning .column i {
+    color: var(--warning);
+}
+
+.myToast.info .column i {
+    color: var(--info);
+}
+
+.myToast.random .column i {
+    color: var(--random);
+}
+
+.myToast .column span {
+    font-size: 1.07rem;
+    margin-left: 12px;
+}
+
+.myToast i:last-child {
+    color: #aeb0d7;
+    cursor: pointer;
+}
+
+.myToast i:last-child:hover {
+    color: var(--dark);
+}
+
+@media screen and (max-width: 530px) {
+    .myToast {
+        width: 100%;
+        font-size: 1rem;
+        margin-left: 20px;
+    }
+}

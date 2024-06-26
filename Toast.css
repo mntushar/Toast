@@ -6,11 +6,12 @@
     --warning: #e9bd0c;
     --info: #3498db;
     --random: #eb43ff;
+    --tastColor: #f7eddf
 }
 
 .toastSection {
     position: fixed;
-    bottom: 20px;
+    top: 20px;
     right: 20px;
     z-index: 999999;
 }
@@ -28,7 +29,7 @@
     border-radius: 4px;
     padding: 16px 17px;
     margin-bottom: 10px;
-    background: var(--light);
+    background: var(--tastColor);
     justify-content: space-between;
     animation: show_toast 0.3s ease forwards;
 }
